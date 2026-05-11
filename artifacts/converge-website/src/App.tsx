@@ -49,6 +49,8 @@ import PrivacyPolicyPage from "@/pages/legal/privacy-policy";
 import TermsOfServicePage from "@/pages/legal/terms-of-service";
 
 import NotFound from "@/pages/not-found";
+import PlasmicTestPage from "@/pages/plasmic-test";
+import PlasmicHost from "@/pages/plasmic-host";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +59,8 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/demo" component={Demo} />
+      <Route path="/plasmic-test" component={PlasmicTestPage} />
+      <Route path="/plasmic-host" component={PlasmicHost} />
 
       {/* Platform */}
       <Route path="/platform/overview" component={PlatformOverview} />
