@@ -15,10 +15,10 @@ paths = [ "/" ]
 localPort = 23236
 
 [services.development]
-run = "pnpm --filter @workspace/converge-website run dev"
+run = "bun run --filter @workspace/converge-website dev"
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/converge-website", "run", "build" ]
+build = [ "bun", "run", "--filter", "@workspace/converge-website", "build" ]
 publicDir = "artifacts/converge-website/dist/public"
 serve = "static"
 
