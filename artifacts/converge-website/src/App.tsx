@@ -4,6 +4,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { Layout } from "@/components/layout/Layout";
+import { PlasmicRoute } from "@/components/PlasmicRoute";
+import PlasmicHost from "@/pages/plasmic-host";
+
+// Original Pages
 import Home from "@/pages/home";
 import Demo from "@/pages/demo";
 
@@ -49,66 +53,59 @@ import PrivacyPolicyPage from "@/pages/legal/privacy-policy";
 import TermsOfServicePage from "@/pages/legal/terms-of-service";
 
 import NotFound from "@/pages/not-found";
-import PlasmicTestPage from "@/pages/plasmic-test";
-import PlasmicHost from "@/pages/plasmic-host";
 
 const queryClient = new QueryClient();
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/demo" component={Demo} />
-      <Route path="/plasmic-test" component={PlasmicTestPage} />
+      {/* 1. Technical routes */}
       <Route path="/plasmic-host" component={PlasmicHost} />
+      
+      {/* 2. Core pages (Allow Plasmic to override) */}
+      <PlasmicRoute path="/" component={Home} />
+      <PlasmicRoute path="/demo" component={Demo} />
 
       {/* Platform */}
-      <Route path="/platform/overview" component={PlatformOverview} />
-      <Route path="/platform/triage" component={TriagePage} />
-      <Route path="/platform/credit-intelligence" component={CreditIntelligencePage} />
-      <Route path="/platform/policy-match" component={PolicyMatchPage} />
-      <Route path="/platform/entity-review" component={EntityReviewPage} />
-      <Route path="/platform/background-report" component={BackgroundReportPage} />
-      <Route path="/platform/comps" component={CompsPage} />
+      <PlasmicRoute path="/platform/overview" component={PlatformOverview} />
+      <PlasmicRoute path="/platform/triage" component={TriagePage} />
+      <PlasmicRoute path="/platform/credit-intelligence" component={CreditIntelligencePage} />
+      <PlasmicRoute path="/platform/policy-match" component={PolicyMatchPage} />
+      <PlasmicRoute path="/platform/entity-review" component={EntityReviewPage} />
+      <PlasmicRoute path="/platform/background-report" component={BackgroundReportPage} />
+      <PlasmicRoute path="/platform/comps" component={CompsPage} />
 
       {/* Solutions */}
-      <Route path="/solutions/bridge-lending" component={BridgeLendingPage} />
-      <Route path="/solutions/construction-lending" component={ConstructionLendingPage} />
-      <Route path="/solutions/cre-term-lending" component={CRETermLendingPage} />
-      <Route path="/solutions/dscr-lending" component={DSCRLendingPage} />
-      <Route path="/solutions/hard-money-lending" component={HardMoneyLendingPage} />
+      <PlasmicRoute path="/solutions/bridge-lending" component={BridgeLendingPage} />
+      <PlasmicRoute path="/solutions/construction-lending" component={ConstructionLendingPage} />
+      <PlasmicRoute path="/solutions/cre-term-lending" component={CRETermLendingPage} />
+      <PlasmicRoute path="/solutions/dscr-lending" component={DSCRLendingPage} />
+      <PlasmicRoute path="/solutions/hard-money-lending" component={HardMoneyLendingPage} />
 
       {/* Customers */}
-      <Route path="/customers" component={CustomersPage} />
-      <Route path="/customers/:slug" component={CaseStudyPage} />
+      <PlasmicRoute path="/customers" component={CustomersPage} />
+      <PlasmicRoute path="/customers/:slug" component={CaseStudyPage} />
 
       {/* Resources */}
-      <Route path="/resources" component={ResourcesPage} />
-      <Route path="/resources/guides" component={ResourcesPage} />
-      <Route path="/resources/webinars" component={ResourcesPage} />
-      <Route path="/resources/reports" component={ResourcesPage} />
-
-      {/* Blog */}
-      <Route path="/blog" component={BlogPage} />
-      <Route path="/blog/:slug" component={BlogPostPage} />
-
-      {/* Glossary */}
-      <Route path="/glossary" component={GlossaryPage} />
-      <Route path="/glossary/:slug" component={GlossaryTermPage} />
+      <PlasmicRoute path="/resources" component={ResourcesPage} />
+      <PlasmicRoute path="/blog" component={BlogPage} />
+      <PlasmicRoute path="/blog/:slug" component={BlogPostPage} />
+      <PlasmicRoute path="/glossary" component={GlossaryPage} />
+      <PlasmicRoute path="/glossary/:slug" component={GlossaryTermPage} />
 
       {/* Pricing & Security */}
-      <Route path="/pricing" component={PricingPage} />
-      <Route path="/security" component={SecurityPage} />
+      <PlasmicRoute path="/pricing" component={PricingPage} />
+      <PlasmicRoute path="/security" component={SecurityPage} />
 
       {/* Company */}
-      <Route path="/company/about" component={AboutPage} />
-      <Route path="/company/careers" component={CareersPage} />
-      <Route path="/company/newsroom" component={NewsroomPage} />
-      <Route path="/company/contact" component={ContactPage} />
+      <PlasmicRoute path="/company/about" component={AboutPage} />
+      <PlasmicRoute path="/company/careers" component={CareersPage} />
+      <PlasmicRoute path="/company/newsroom" component={NewsroomPage} />
+      <PlasmicRoute path="/company/contact" component={ContactPage} />
 
       {/* Legal */}
-      <Route path="/legal/privacy-policy" component={PrivacyPolicyPage} />
-      <Route path="/legal/terms-of-service" component={TermsOfServicePage} />
+      <PlasmicRoute path="/legal/privacy-policy" component={PrivacyPolicyPage} />
+      <PlasmicRoute path="/legal/terms-of-service" component={TermsOfServicePage} />
 
       <Route component={NotFound} />
     </Switch>
