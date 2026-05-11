@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-pnpm install --frozen-lockfile
-pnpm --filter db push
+bun install
+bun run --filter "@workspace/db" push
