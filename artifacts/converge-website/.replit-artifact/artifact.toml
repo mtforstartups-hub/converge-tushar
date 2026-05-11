@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Converge Finance Website"
+version = "1.0.0"
+id = "artifacts/converge-website"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23236
+
+[services.development]
+run = "pnpm --filter @workspace/converge-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/converge-website", "run", "build" ]
+publicDir = "artifacts/converge-website/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23236"
+BASE_PATH = "/"
